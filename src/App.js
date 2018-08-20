@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Student from './Student';
+import StudentForm from './StudentForm';
 
 class App extends React.Component {
 
@@ -30,6 +31,17 @@ class App extends React.Component {
     }
   }
 
+  addStudent = ( student ) => {
+
+    let newList = this.state.students;
+    newList.push( student );
+
+    this.setState({
+      students : newList
+    });
+
+  }
+
   render(){
     return (
       <div className="App">
@@ -39,6 +51,7 @@ class App extends React.Component {
           return ( <Student student={student} num={index} /> )
         })}
         
+        <StudentForm addStudent={this.addStudent} />
       </div>
     );
   }
